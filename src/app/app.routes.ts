@@ -7,16 +7,23 @@ import {BookComponent} from "./books/book/book.component";
 import {LoginComponent} from "./login/login.component";
 import {AdminComponent} from "./admin/admin.component";
 import {loggedInGuard} from "./logged-in.guard";
+import { AuthorsComponent } from './authors/authors.component';
+import { AuthorComponent } from './authors/author/author.component';
+
 
 const booksRoutes: Routes = [
   {path: ':id', component: BookComponent}
 ];
-
+const authorsRoutes: Routes = [
+  { path: ':id', component: AuthorComponent }
+];
 export const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},
   { path: 'login', component: LoginComponent },
+  
+  
   {
     path: 'admin',
     component: AdminComponent,
@@ -24,6 +31,9 @@ export const routes: Routes = [
   },
   {path: 'books', component: BooksComponent,
     children: booksRoutes
+  },
+  {path: 'authors', component: AuthorsComponent,
+    children: authorsRoutes
   },
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: '**', component: HomeComponent}
